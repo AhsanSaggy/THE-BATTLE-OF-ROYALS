@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE BATTLE OF ROYALS</title>
+<style>
+:root{--cyan:#48e6ff;--gold:#ffd45b;--panel:rgba(8,14,28,.88)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101a2a;color:white;font-family:Arial,Helvetica,sans-serif}
+canvas{display:block}#hud{position:fixed;inset:0;pointer-events:none}
+#brand{position:absolute;top:18px;left:22px;font-weight:1000;font-size:clamp(18px,3vw,30px);letter-spacing:1px;text-shadow:0 3px 12px #000}
+#brand span{color:var(--gold)}#stats{position:absolute;top:72px;left:22px;background:var(--panel);padding:10px 14px;border:1px solid #ffffff30;border-radius:10px;font-weight:bold}
+#healthwrap{position:absolute;left:22px;bottom:105px;width:230px}#health,#shield{height:13px;border-radius:10px;margin-top:7px;background:#ffffff28;overflow:hidden;border:1px solid #ffffff55}
+#health>i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#20d86b,#8dff9d)}#shield>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1a9bff,#79dcff)}
+#healthwrap small{font-weight:bold;text-shadow:0 2px 4px #000}
+#crosshair{position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%)}
+#crosshair:before,#crosshair:after{content:"";position:absolute;background:white;box-shadow:0 0 4px #000}
+#crosshair:before{width:2px;height:20px;left:9px}#crosshair:after{height:2px;width:20px;top:9px}
+#hotbar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:7px;pointer-events:auto}
+.slot{width:70px;height:70px;background:rgba(10,17,31,.86);border:2px solid #ffffff66;border-radius:9px;position:relative;text-align:center;padding-top:8px;cursor:pointer;box-shadow:0 5px 16px #0007}
+.slot.selected{border:3px solid white;transform:translateY(-7px);box-shadow:0 0 18px #fff8}
+.slot .key{position:absolute;top:3px;left:6px;font-size:11px;color:#ddd}.slot .emoji{font-size:27px}.slot .name{font-size:9px;font-weight:bold;white-space:nowrap}.slot .ammo{font-size:10px;color:#ddd;margin-top:2px}
+.common{border-bottom:5px solid #aaa}.uncommon{border-bottom:5px solid #3bd36c}.rare{border-bottom:5px solid #3d9cff}.epic{border-bottom:5px solid #b66aff}.legendary{border-bottom:5px solid #ffad36}.mythic{border-bottom:5px solid #ffdf45}
+#help{position:absolute;right:18px;bottom:18px;text-align:right;font-size:12px;line-height:1.6;text-shadow:0 2px 4px #000}
+#toast{position:absolute;top:22%;left:50%;transform:translateX(-50%);font-size:22px;font-weight:900;text-shadow:0 3px 8px #000;opacity:0;transition:opacity .2s}
+#overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(4,9,20,.93),rgba(9,30,52,.84));z-index:5}
+.panel{width:min(560px,92vw);padding:30px;background:rgba(8,15,30,.94);border:1px solid #ffffff44;border-radius:18px;box-shadow:0 20px 80px #000b;text-align:center}
+h1{font-size:clamp(32px,7vw,58px);line-height:.95;margin:0 0 12px;font-weight:1000;text-shadow:0 5px 0 #000}h1 span{color:var(--gold)}
+.panel p{color:#c9d5e5;line-height:1.5}.btn{border:0;border-radius:9px;padding:14px 24px;font-size:16px;font-weight:900;background:linear-gradient(90deg,#ffb52e,#ffe16c);color:#182033;cursor:pointer;margin:7px}.btn.secondary{background:#263b58;color:white;border:1px solid #ffffff44}
+#shop{display:none;position:fixed;inset:0;background:#050a12d9;z-index:4;align-items:center;justify-content:center}
+.shopbox{background:#101d32;border:1px solid #ffffff44;border-radius:16px;padding:24px;width:min(650px,94vw);text-align:center}.shopgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.shopitem{padding:14px;background:#22334c;border-radius:10px;min-width:145px}
+#notice{position:absolute;top:14px;right:18px;color:#fff;background:#111b2acc;border:1px solid #ffffff44;border-radius:8px;padding:9px 12px;font-size:12px}
+@media(max-width:600px){.slot{width:55px;height:62px}.slot .name{font-size:8px}#help{display:none}#healthwrap{bottom:95px;width:180px}}
+</style>
+</head>
+<body>
+<div id="hud">
+ <div id="brand">THE <span>BATTLE</span> OF ROYALS</div>
+ <div id="stats">ELIMINATIONS: <b id="kills">0</b> &nbsp; • &nbsp; COINS: <b id="coins">0</b> &nbsp; • &nbsp; BOTS LEFT: <b id="left">6</b></div>
+ <div id="notice">LOCAL PRACTICE • SINGLE PLAYER</div>
+ <div id="crosshair"></div><div id="toast"></div>
+ <div id="healthwrap"><small>HEALTH <b id="hpnum">100</b></small><div id="health"><i id="hpbar"></i></div><small>SHIELD <b id="shnum">0</b></small><div id="shield"><i id="shbar"></i></div></div>
+ <div id="hotbar"></div>
+ <div id="help">WASD move · Mouse aim · Click shoot<br>Space jump · Shift sprint · R reload<br>E open chest · 1–5 switch · B shop · Esc pause</div>
+</div>
+<div id="overlay"><div class="panel"><h1>THE <span>BATTLE</span><br>OF ROYALS</h1><p>Drop in. Gear up. Be the last one standing.</p><p>Explore the island, open glowing supply chests and defeat the rival bots.</p><button class="btn" id="play">DEPLOY</button><button class="btn secondary" id="locker">SKIN LOCKER</button><p style="font-size:11px">Prototype build • Local single-player with AI opponents</p></div></div>
+<div id="shop"><div class="shopbox"><h2>ROYAL ARMOURY</h2><p>Spend coins earned in matches. Purchases are saved on this browser.</p><div class="shopgrid" id="shopgrid"></div><button class="btn secondary" id="closeShop">CLOSE</button></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=> {
+const $=id=>document.getElementById(id);
+const weapons=[
+ {name:'ASSAULT',icon:'🔫',rarity:'common',mag:30,ammo:30,damage:18,rate:170},
+ {name:'BURST',icon:'💥',rarity:'rare',mag:24,ammo:24,damage:15,rate:300},
+ {name:'SHOTGUN',icon:'💣',rarity:'epic',mag:5,ammo:5,damage:11,rate:650},
+ {name:'SMG',icon:'⚡',rarity:'uncommon',mag:40,ammo:40,damage:10,rate:90},
+ {name:'MYTHIC',icon:'🌟',rarity:'mythic',mag:20,ammo:20,damage:34,rate:230}
+];
+let selected=0,kills=0,hp=100,shield=0,coins=Number(localStorage.royalCoins||0),running=false,paused=false,lastShot=0,reloading=false,keys={},bots=[],chests=[],loot=[],bullets=[],clock=new THREE.Clock();
+let scene,camera,renderer,player,gun,ground,raycaster=new THREE.Raycaster(),yaw=0,pitch=0,velY=0,onGround=true,stormRadius=100,stormTimer=0;
+const mat=(c,r=.8,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+const mats={grass:mat(0x4d8750),dark:mat(0x315f42),wood:mat(0x8b5a35),roof:mat(0x536477),skin:mat(0x2379c9),bot:mat(0xc63f46),gold:mat(0xffc342),chest:mat(0x9b641f,.4),glow:mat(0x42eaff,.2)};
+function box(parent,w,h,d,x,y,z,material){let o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o}
+function init(){
+ scene=new THREE.Scene();scene.background=new THREE.Color(0x91c9e8);scene.fog=new THREE.Fog(0x91c9e8,100,260);
+ camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,500);
+ renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.appendChild(renderer.domElement);
+ scene.add(new THREE.HemisphereLight(0xc8eaff,0x47613c,1.15));let sun=new THREE.DirectionalLight(0xfff0cf,1.5);sun.position.set(-45,80,30);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);scene.add(sun);
+ ground=new THREE.Mesh(new THREE.PlaneGeometry(500,500),mats.grass);ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+ // rolling island patches, roads and water edge
+ for(let i=0;i<95;i++){let x=(Math.random()-.5)*210,z=(Math.random()-.5)*210;if(Math.abs(x)<12&&Math.abs(z)<12)continue;let tree=new THREE.Group();tree.position.set(x,0,z);let trunk=new THREE.Mesh(new THREE.CylinderGeometry(.35,.5,3,7),mats.wood);trunk.position.y=1.5;trunk.castShadow=true;tree.add(trunk);let crown=new THREE.Mesh(new THREE.ConeGeometry(2.3,5,7),mat([0x246b43,0x2f8050,0x397849][i%3]));crown.position.y=5; crown.castShadow=true;tree.add(crown);scene.add(tree)}
+ for(let i=0;i<16;i++){let x=(Math.random()-.5)*150,z=(Math.random()-.5)*150;if(Math.abs(x)<18&&Math.abs(z)<18){x+=30}let w=8+Math.random()*9,d=8+Math.random()*9,h=5+Math.random()*12;let b=box(scene,w,h,d,x,h/2,z,mats.roof);box(scene,w+1,.7,d+1,x,h+.35,z,mat(0x394d65));for(let yy=2;yy<h-1;yy+=3)for(let xx=-w/2+1;xx<w/2;xx+=3)box(scene,.9,1.2,.12,x+xx,yy,z-d/2-.07,mat(0x77c5e7,.3));}
+ // player
+ player=new THREE.Group();player.position.set(0,0,0);scene.add(player);
+ let body=box(player,1.1,1.45,.62,0,1.45,0,mat(0x1975c8));let head=new THREE.Mesh(new THREE.SphereGeometry(.42,16,12),mat(0xe8b58d));head.position.y=2.48;player.add(head);
+ let leg1=box(player,.42,.9,.45,-.3,.45,0,mat(0x24324a)),leg2=box(player,.42,.9,.45,.3,.45,0,mat(0x24324a));
+ let arm1=box(player,.32,1,.35,-.75,1.6,0,mat(0xe8b58d)),arm2=box(player,.32,1,.35,.75,1.6,0,mat(0xe8b58d));
+ gun=new THREE.Group();gun.position.set(.42,1.65,-.55);player.add(gun);box(gun,.22,.22,1.25,0,0,-.35,mat(0x202a38,.35,.7));box(gun,.32,.3,.45,0,-.12,.2,mat(0x39485b,.35,.5));box(gun,.12,.35,.22,0,-.27,.12,mat(0x111820));
+ // named POIs
+ const labels=[['ROYAL TOWN',-48,-42],['DUSTY DEPOT',48,-42],['PINE RIDGE',-48,48],['CROWN CAMP',48,48]];
+ labels.forEach(([n,x,z])=>{let s=document.createElement('div');s.textContent=n;s.style.cssText='position:absolute;color:white;font-weight:900;font-size:12px;text-shadow:0 2px 5px #000;pointer-events:none';s.dataset.x=x;s.dataset.z=z;document.body.appendChild(s);});
+ for(let i=0;i<6;i++)spawnBot();
+ for(let i=0;i<10;i++)spawnChest();
+ buildHotbar();buildShop();window.addEventListener('resize',resize);animate();
+}
+function spawnBot(){let a=Math.random()*Math.PI*2,r=24+Math.random()*75,g=new THREE.Group();g.position.set(Math.cos(a)*r,0,Math.sin(a)*r);scene.add(g);let color=mat([0xc33e49,0x9b4fc7,0x3b9b8c][bots.length%3]);box(g,.95,1.35,.58,0,1.35,0,color);let h=new THREE.Mesh(new THREE.SphereGeometry(.37,12,10),mat(0xd6a17e));h.position.y=2.25;g.add(h);let gunmesh=box(g,.16,.16,.9,.48,1.55,-.35,mat(0x222a33));bots.push({group:g,hp:100,alive:true,cool:Math.random()*2,gun:gunmesh})}
+function spawnChest(){let a=Math.random()*Math.PI*2,r=12+Math.random()*85,g=new THREE.Group();g.position.set(Math.cos(a)*r,0,Math.sin(a)*r);scene.add(g);box(g,1.8,1.1,1.2,0,.65,0,mats.chest);box(g,1.9,.25,1.3,0,1.25,0,mats.gold);let glow=new THREE.PointLight(0x43ddff,1.6,9);glow.position.y=2;g.add(glow);chests.push({group:g,opened:false})}
+function buildHotbar(){ $('hotbar').innerHTML='';weapons.forEach((w,i)=>{let d=document.createElement('div');d.className='slot '+w.rarity+(i===selected?' selected':'');d.innerHTML=`<span class="key">${i+1}</span><div class="emoji">${w.icon}</div><div class="name">${w.name}</div><div class="ammo">${w.ammo}/${w.mag}</div>`;d.onclick=()=>selectWeapon(i);$('hotbar').appendChild(d)})}
+function selectWeapon(i){selected=i;buildHotbar()}
+function buildShop(){let items=[['RANGER','🪖',0],['CRIMSON','🟥',120],['VOLT','⚡',220],['GOLD RUSH','👑',400]];$('shopgrid').innerHTML=items.map((it,i)=>`<div class="shopitem"><div style="font-size:30px">${it[1]}</div><b>${it[0]}</b><p>${i===0?'DEFAULT SKIN':it[2]+' COINS'}</p><button class="btn" data-skin="${i}" ${i===0?'':' '}>${i===0?'EQUIPPED':'BUY'}</button></div>`).join('');$('shopgrid').querySelectorAll('button').forEach(b=>b.onclick=()=>{let cost=[0,120,220,400][+b.dataset.skin];if(coins>=cost){coins-=cost;localStorage.royalCoins=coins;$('coins').textContent=coins;toast('SKIN UNLOCKED!')}else toast('NOT ENOUGH COINS')})}
+function toast(t){$('toast').textContent=t;$('toast').style.opacity=1;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.opacity=0,1500)}
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)}
+function start(){ $('overlay').style.display='none';running=true;renderer.domElement.requestPointerLock?.();clock.start()}
+$('play').onclick=start;$('locker').onclick=()=>toast('Skins can be bought in the armoury with B');$('closeShop').onclick=()=>{$('shop').style.display='none';paused=false};
+document.addEventListener('pointerlockchange',()=>{});
+document.addEventListener('mousemove',e=>{if(document.pointerLockElement===renderer.domElement&&running&&!paused){yaw-=e.movementX*.0023;pitch-=e.movementY*.0023;pitch=Math.max(-.8,Math.min(.65,pitch))}});
+document.addEventListener('keydown',e=>{keys[e.code]=true;if(/^Digit[1-5]$/.test(e.code))selectWeapon(+e.code.slice(5)-1);if(e.code==='KeyR')reload();if(e.code==='KeyE')openChest();if(e.code==='KeyB'){paused=true;$('shop').style.display='flex'}if(e.code==='Escape'&&running){paused=!paused;if(paused)document.exitPointerLock?.();else renderer.domElement.requestPointerLock?.()}});
+document.addEventListener('keyup',e=>keys[e.code]=false);
+document.addEventListener('mousedown',e=>{if(e.button===0&&running&&!paused&&document.pointerLockElement===renderer.domElement)shoot()});
+function reload(){if(reloading)return;let w=weapons[selected];if(w.ammo===w.mag)return;reloading=true;toast('RELOADING...');setTimeout(()=>{w.ammo=w.mag;reloading=false;buildHotbar()},900)}
+function aimPoint(){raycaster.setFromCamera(new THREE.Vector2(0,0),camera);let hits=raycaster.intersectObjects(scene.children,true);return hits.length?hits[0].point:camera.position.clone().add(raycaster.ray.direction.clone().multiplyScalar(100))}
+function shoot(){let now=performance.now(),w=weapons[selected];if(now-lastShot<w.rate||reloading)return;lastShot=now;if(w.ammo<=0){toast('PRESS R TO RELOAD');return}w.ammo--;buildHotbar();let target=aimPoint(),origin=player.position.clone().add(new THREE.Vector3(0,1.7,0));let dir=target.clone().sub(origin).normalize();let end=origin.clone().add(dir.multiplyScalar(120));let line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([origin,end]),new THREE.LineBasicMaterial({color:0xffe7a0}));scene.add(line);setTimeout(()=>{scene.remove(line);line.geometry.dispose();line.material.dispose()},65);
+let best=null,dist=999;bots.forEach(b=>{if(!b.alive)return;let p=b.group.position.clone().add(new THREE.Vector3(0,1.3,0));let to=p.clone().sub(origin),along=to.dot(dir);let closest=origin.clone().add(dir.clone().multiplyScalar(along));let off=p.distanceTo(closest);if(along>0&&along<120&&off<1.25&&along<dist){best=b;dist=along}});if(best){best.hp-=w.damage;if(best.hp<=0){best.alive=false;scene.remove(best.group);kills++;coins+=25;localStorage.royalCoins=coins;$('kills').textContent=kills;$('coins').textContent=coins;$('left').textContent=bots.filter(b=>b.alive).length;toast('ELIMINATION +25 COINS');if(bots.every(b=>!b.alive)){coins+=100;localStorage.royalCoins=coins;toast('VICTORY ROYALE! +100 COINS')}}else toast('HIT!')}}
+function openChest(){let near=chests.find(c=>!c.opened&&c.group.position.distanceTo(player.position)<5);if(!near){toast('NO CHEST NEARBY');return}near.opened=true;near.group.rotation.z=-.45;near.group.children[1].material=mat(0x54eaff);coins+=5;localStorage.royalCoins=coins;$('coins').textContent=coins;let idx=Math.floor(Math.random()*weapons.length);weapons[idx].ammo=Math.min(weapons[idx].mag*2,weapons[idx].ammo+weapons[idx].mag);selectWeapon(idx);toast('CHEST OPENED! '+weapons[idx].name+' FOUND')}
+function update(dt){if(!running||paused)return;let forward=new THREE.Vector3(-Math.sin(yaw),0,-Math.cos(yaw)),right=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw)),move=new THREE.Vector3();if(keys.KeyW)move.add(forward);if(keys.KeyS)move.sub(forward);if(keys.KeyD)move.add(right);if(keys.KeyA)move.sub(right);if(move.lengthSq())move.normalize().multiplyScalar((keys.ShiftLeft?13:8)*dt);player.position.add(move);if(keys.Space&&onGround){velY=8;onGround=false}velY-=20*dt;player.position.y+=velY*dt;if(player.position.y<0){player.position.y=0;velY=0;onGround=true}
+player.rotation.y=yaw;let camOffset=new THREE.Vector3(4.2,3.1,6.2).applyAxisAngle(new THREE.Vector3(0,1,0),yaw);camera.position.copy(player.position).add(camOffset);let look=player.position.clone().add(new THREE.Vector3(0,1.7,0)).add(new THREE.Vector3(-Math.sin(yaw+pitch)*25,Math.sin(pitch)*25,-Math.cos(yaw+pitch)*25));camera.lookAt(look);
+bots.forEach(b=>{if(!b.alive)return;let delta=player.position.clone().sub(b.group.position),d=delta.length();if(d>5){delta.y=0;delta.normalize();b.group.position.add(delta.multiplyScalar(dt*(d>25?2.4:1.2)));b.group.rotation.y=Math.atan2(-delta.x,-delta.z)}b.cool-=dt;if(d<32&&b.cool<=0){b.cool=1.5+Math.random();if(Math.random()<.5){if(shield>0)shield=Math.max(0,shield-7);else hp=Math.max(0,hp-7);$('hpnum').textContent=hp;$('shnum').textContent=shield;$('hpbar').style.width=hp+'%';$('shbar').style.width=shield+'%';if(hp<=0){running=false;$('overlay').style.display='flex';$('overlay').querySelector('h1').innerHTML='YOU WERE<br><span>ELIMINATED</span>';$('overlay').querySelector('p').textContent='Try again and claim the crown.';$('play').textContent='PLAY AGAIN'}}}});$('hpnum').textContent=hp;$('shnum').textContent=shield}
+function animate(){requestAnimationFrame(animate);let dt=Math.min(clock.getDelta(),.04);update(dt);renderer.render(scene,camera)}
+init();$('coins').textContent=coins;
+})();
+</script>
+</body></html>
