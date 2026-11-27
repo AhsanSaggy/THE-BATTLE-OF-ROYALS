@@ -70,6 +70,82 @@ body.healing #healthWrap{filter:drop-shadow(0 0 8px #52ff9b);transform:scale(1.0
 .icard svg{width:120px;height:46px}.icard.sel{box-shadow:0 0 16px var(--rc)}.icard em{font-style:normal;color:var(--rc);font-weight:900;font-size:11px;letter-spacing:1px}.icard.empty{opacity:.5;justify-content:center;height:120px;border-style:dashed}.icard .num{position:absolute;left:8px;top:4px;color:#8fa7c4;font-weight:900}
 .dropbtn{border:0;border-radius:8px;background:#e34d55;color:#fff;font-weight:900;padding:4px 12px;cursor:pointer}.invnew{display:flex;flex-direction:column;align-items:center}.invnew .icard{cursor:default}.invlbl{font-size:12px;letter-spacing:2px;color:#ffd34e;font-weight:900;margin-bottom:6px}
 .inp{padding:10px;border-radius:10px;border:1px solid #fff5;background:#0a1a2c;color:#fff;font-weight:800;text-align:center;margin:6px;width:130px}.sm{font-size:14px;padding:11px 14px}#lobby{margin:10px;min-height:22px;font-weight:800;color:#ffe16b}.row{margin:8px 0}
+
+/* ROYALS MENU REDESIGN */
+#start.menuScreen{display:block;overflow:auto;background:radial-gradient(ellipse at 76% 35%,#79c7dc 0%,#4d9fbd 24%,#244e70 55%,#101d36 100%);color:#fff}
+#start.menuScreen:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,19,37,.94) 0%,rgba(8,19,37,.72) 43%,rgba(8,19,37,.12) 100%),linear-gradient(0deg,rgba(7,15,29,.68),transparent 38%);z-index:0}
+#start.menuScreen:after{content:"";position:absolute;right:-7vw;bottom:-15vh;width:65vw;height:75vh;background:linear-gradient(145deg,#b9e6a2 0 12%,#6fbf83 12% 37%,#3d8f75 37% 62%,#28627a 62%);clip-path:polygon(50% 0,100% 22%,83% 100%,18% 100%,0 28%);filter:drop-shadow(0 30px 50px #071525aa);opacity:.72;z-index:0}
+.menuLayout{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;padding:26px clamp(20px,5vw,76px) 20px}
+.menuTop,.menuBottom{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.miniMark{font-size:15px;font-weight:1000;letter-spacing:2px}.miniMark span{color:#ffd66b}
+.menuTag,.menuBottom{font-size:10px;letter-spacing:2px;font-weight:900;color:#d2e4ed}
+.menuTag i,.onlineStatus i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8ce6b1;margin:0 9px;box-shadow:0 0 10px #8ce6b1}
+.menuMain{width:min(570px,100%);margin:auto 0;padding:clamp(38px,7vh,82px) 0 42px}
+.menuEyebrow{font-size:11px;letter-spacing:4px;font-weight:1000;color:#ffd66b;margin-bottom:15px}
+.menuLogo{font-size:clamp(43px,7.4vw,82px);line-height:.86;letter-spacing:-4px;margin:0;font-weight:1000;text-align:left;text-shadow:0 5px 0 #132b46,0 12px 30px #07152588}
+.menuLogo span{color:#ffd66b}
+.menuDesc{color:#d7e8ee;font-size:15px;margin:20px 0 27px;letter-spacing:.2px}
+.nameLabel{display:block;font-size:9px;letter-spacing:2px;font-weight:1000;color:#c1d8e2;margin-bottom:7px}
+.nameInput{width:100%;height:46px;border:1px solid #c4e6f04a;border-radius:8px;background:#0b2038b8;color:#fff;padding:0 14px;font-size:14px;font-weight:800;outline:none;box-shadow:inset 0 1px 8px #06132655}
+.nameInput:focus{border-color:#ffd66b;box-shadow:0 0 0 3px #ffd66b22}
+.nameInput::placeholder{color:#90aaba}
+.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:14px}
+.modeCard{position:relative;min-height:112px;text-align:left;padding:16px;border:1px solid #ffffff44;border-radius:10px;color:white;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transition:transform .18s,border-color .18s,filter .18s;overflow:hidden}
+.modeCard:hover{transform:translateY(-4px);border-color:#fff;filter:brightness(1.12)}
+.soloMode{background:linear-gradient(135deg,#276e91,#17415f)}
+.onlineMode{background:linear-gradient(135deg,#6755a0,#352f70)}
+.modeIcon{font-size:19px;margin-bottom:6px;color:#ffe08a}
+.modeTitle{font-size:19px;line-height:1;font-weight:1000;letter-spacing:1px}
+.modeSub{font-size:9px;letter-spacing:1.8px;font-weight:900;color:#d6e8f2;margin-top:7px}
+.modeArrow{position:absolute;right:15px;top:14px;font-size:20px;color:#ffffffb0}
+.onlinePanel{margin-top:12px;padding:15px;border-radius:10px;border:1px solid #ffffff38;background:#07182cdb;box-shadow:0 14px 34px #06132655}
+.onlineHead{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;letter-spacing:1.6px;font-weight:1000}
+.onlineStatus{color:#9fb8c9;font-size:8px;letter-spacing:1px}
+.onlineActions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
+.actionBtn{min-height:42px;padding:10px 14px;border-radius:7px;border:1px solid #ffffff40;background:#193b58;color:#fff;font-size:10px;letter-spacing:1.3px;font-weight:1000;cursor:pointer;transition:transform .16s,filter .16s}
+.actionBtn:hover{transform:translateY(-2px);filter:brightness(1.18)}
+.primaryAction{background:#f3c34f;border-color:#ffe49a;color:#172b40}
+.joinLine{display:grid;grid-template-columns:1fr auto;gap:8px}
+.codeInput{height:42px;text-transform:uppercase;letter-spacing:3px}
+.lobbyMsg{min-height:20px;margin-top:10px;color:#d8e7ef;font-size:11px;line-height:1.5}
+.launchAction{width:100%;margin-top:8px;background:#64bd83;color:#102b2c;border:0}
+.menuFoot{display:flex;gap:11px;align-items:center;margin-top:25px;color:#a9c3d0;font-size:9px;font-weight:900;letter-spacing:1.5px}
+.menuFoot b{color:#ffd66b}
+.menuBottom{padding-top:15px;border-top:1px solid #ffffff26;color:#a9c0cc;font-size:8px}
+@media(max-width:640px){.menuLayout{padding:18px 18px 14px}.menuMain{padding:55px 0 30px}.menuLogo{letter-spacing:-2px}.menuTag{font-size:8px;letter-spacing:1px}.menuBottom{font-size:7px;letter-spacing:1px}.modeCard{min-height:100px;padding:12px}.modeTitle{font-size:16px}.modeSub{font-size:8px}.onlineHead{align-items:flex-start;flex-direction:column}}
+
+
+/* ADMIN CONSOLE */
+.adminOpen{border:1px solid #ffffff55;background:#10253dcc;color:#e8f5ff;border-radius:8px;padding:9px 13px;font-weight:1000;letter-spacing:1px;cursor:pointer;font-size:10px}
+#adminOverlay{display:none;position:fixed;inset:0;z-index:80;background:#020916eF;align-items:center;justify-content:center;padding:16px}
+.adminShell{width:min(920px,96vw);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#132d49,#091525);border:1px solid #ffffff35;border-radius:18px;box-shadow:0 25px 90px #000b;color:#eff8ff;padding:22px}
+.adminTop{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #ffffff20;padding-bottom:14px}
+.adminTop h2{margin:0;font-size:22px;letter-spacing:2px}.adminTop p{margin:5px 0 0;color:#a9c1d5;font-size:11px}
+.adminClose{border:1px solid #ffffff44;background:#ffffff12;color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:900}
+.adminNotice{margin:16px 0;padding:12px 14px;border:1px solid #e8ad4b66;background:#e8ad4b13;border-radius:10px;color:#ffe0a0;font-size:12px;line-height:1.5}
+.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adminCard{background:#ffffff0a;border:1px solid #ffffff20;border-radius:12px;padding:15px}
+.adminCard h3{font-size:12px;letter-spacing:1.5px;margin:0 0 12px;color:#ffd66b}
+.adminStat{font-size:26px;font-weight:1000}.adminMuted{font-size:11px;color:#a9c1d5;margin-top:4px}
+.adminEvents{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.adminEvent{padding:10px;border:1px solid #ffffff26;background:#10243a;border-radius:9px;color:#eaf5ff;text-align:left;font-weight:800;font-size:11px}
+.adminEvent:disabled,.adminAction:disabled{opacity:.42;cursor:not-allowed}
+.adminAction{border:0;border-radius:8px;padding:10px 13px;background:#d9a83e;color:#172033;font-weight:1000;cursor:not-allowed}
+.adminFoot{margin-top:14px;color:#8ea9be;font-size:10px;line-height:1.5}
+@media(max-width:620px){.adminGrid{grid-template-columns:1fr}.adminEvents{grid-template-columns:1fr}.adminShell{padding:15px}}
+
+.adminActions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.adminAction{cursor:pointer;transition:filter .15s,transform .15s}
+.adminAction:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.adminEvent{cursor:pointer;transition:border-color .15s,background .15s}
+.adminEvent.selected{border:2px solid #ffd66b;background:#55431e;color:#fff1bf}
+.adminEventControls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.dangerAction{background:#a93d4b;color:#fff}
+.adminLog{min-height:80px;max-height:145px;overflow:auto;background:#06111f;border:1px solid #ffffff18;border-radius:8px;padding:10px;color:#c5d8e8;font:11px/1.6 ui-monospace,monospace;white-space:pre-wrap}
+#eventBanner{display:none;position:fixed;z-index:18;top:70px;left:50%;transform:translateX(-50%);padding:10px 18px;border:2px solid #ffe08a;border-radius:12px;background:#17243beF;color:#ffe08a;font-weight:1000;letter-spacing:1.5px;text-align:center;box-shadow:0 8px 30px #0008;pointer-events:none}
+@media(max-width:620px){.adminActions{grid-template-columns:1fr}.adminEventControls{display:grid}.adminEventControls button{width:100%}#eventBanner{top:58px;width:92%;font-size:12px}}
+
+
 </style>
 </head>
 <body>
@@ -78,12 +154,67 @@ body.healing #healthWrap{filter:drop-shadow(0 0 8px #52ff9b);transform:scale(1.0
  <div class="top"><div class="brand">THE BATTLE <span>OF ROYALS</span></div><div id="stats"><div class="pill">👑 <b id="kills">0</b> ELIMS</div><div class="pill">👥 <b id="left">8</b> LEFT</div></div></div>
  <div id="map"><canvas id="mapcanvas" width="200" height="200"></canvas></div>
  <div id="healthWrap"><div class="barlabel">❤️ HEALTH <span id="hptext">100</span></div><div class="bar"><div id="hp" class="fill health"></div></div><div class="barlabel">🛡️ SHIELD <span id="shtext">50</span></div><div class="bar"><div id="sh" class="fill shield"></div></div></div>
- <div id="help" class="pill">WASD — Move<br>Mouse — Aim<br>Left click — Shoot<br>R — Reload<br>Shift — Sprint<br>Space — Jump<br>1–5 — Weapon slots<br>E — Open / pick up<br>H / J — Medkit / Shield<br>Tab — Inventory</div>
+ <div id="help" class="pill">WASD — Move<br>Mouse — Aim<br>Right-click + drag — Orbit camera<br>Left click — Shoot<br>R — Reload<br>Shift — Sprint<br>Space — Jump<br>1–5 — Weapon slots<br>E — Open / pick up<br>H / J — Medkit / Shield<br>Tab — Inventory</div>
  <div id="hotbar"></div><div id="prompt"></div><div id="wbox"><div id="wrar"></div><div id="wname"></div><div class="big"><b id="ammo">30</b><span id="rsv">/ 90</span></div><div id="cons"></div></div><div id="toast"></div><div id="notice">LAND • LOOT • SURVIVE</div>
  <div id="healStatus"><div id="healTitle">🩹 USING MEDKIT</div><div class="sub">Stay safe while you heal...</div><div id="healTrack"><div id="healProgress"></div></div></div>
 </div>
-<div id="crosshair"><i></i></div>
-<div id="start"><div class="card"><h1>THE BATTLE<br><em>OF ROYALS</em></h1><p>A colourful island. Rivals everywhere. Be the last one standing.</p><div class="tips"><span>🖱️ Aim with mouse</span><span>🔫 Click to fire</span><span>⌨️ WASD to move</span></div><input id="pname" class="inp" placeholder="Your name" maxlength="12"><br><button class="mainbtn" id="quickBtn">QUICK PLAY</button> <button class="mainbtn" id="play">SOLO VS BOTS</button><p style="font-size:11px;margin:6px">Quick Play joins an online game if one is waiting, otherwise starts a match with bots.</p><div class="row"><button class="mainbtn sm" id="hostBtn">HOST ONLINE</button><input id="jcode" class="inp" placeholder="CODE" maxlength="4"><button class="mainbtn sm" id="joinBtn">JOIN</button></div><div id="lobby"></div><button class="mainbtn" id="startMP" style="display:none">START MATCH</button><p style="font-size:11px">Single-player practice match with AI rivals</p></div></div>
+<div id="crosshair"><i></i></div><div id="eventBanner"></div><button id="adminMatchOpen" class="adminOpen" type="button" style="display:none;position:fixed;z-index:35;top:14px;left:14px;background:#10253deF;border:1px solid #ffd66b;color:#ffe6a3;box-shadow:0 4px 18px #0008">⚙ ADMIN</button>
+<div id="start" class="menuScreen">
+ <div class="menuShade"></div>
+ <div class="menuLayout">
+  <header class="menuTop"><div class="miniMark">BR <span>ROYALS</span></div><div style="display:flex;align-items:center;gap:12px"><div class="menuTag">ISLAND SHOWDOWN <i></i> SEASON ZERO</div><button class="adminOpen" id="adminOpen">⚙ ADMIN</button></div></header>
+  <main class="menuMain">
+   <div class="menuEyebrow">DROP INTO THE UNKNOWN</div>
+   <h1 class="menuLogo">THE BATTLE<br><span>OF ROYALS</span></h1>
+   <p class="menuDesc">Explore the island. Gear up. Outlast everyone.</p>
+   <label class="nameLabel" for="pname">PLAYER NAME</label>
+   <input id="pname" class="nameInput" placeholder="Enter your name" maxlength="12" autocomplete="nickname">
+   <div class="modeGrid">
+    <button class="modeCard soloMode" id="play"><span class="modeIcon">♟</span><span class="modeTitle">SOLO</span><span class="modeSub">BATTLE THE BOTS</span><span class="modeArrow">↗</span></button>
+    <button class="modeCard onlineMode" id="onlineToggle"><span class="modeIcon">◎</span><span class="modeTitle">MULTIPLAYER</span><span class="modeSub">PLAY WITH OTHERS</span><span class="modeArrow">↗</span></button>
+   </div>
+   <section class="onlinePanel" id="onlinePanel" hidden>
+    <div class="onlineHead"><span>ONLINE LOBBY</span><span class="onlineStatus"><i></i> PEER-TO-PEER TEST</span></div>
+    <div class="onlineActions"><button class="actionBtn primaryAction" id="hostBtn">CREATE PRIVATE ROOM</button><div class="joinLine"><input id="jcode" class="nameInput codeInput" placeholder="ROOM CODE" maxlength="4"><button class="actionBtn" id="joinBtn">JOIN ROOM</button></div></div>
+    <div id="lobby" class="lobbyMsg">Create a room and share its code with friends.</div>
+    <button class="actionBtn launchAction" id="startMP" style="display:none">START MATCH →</button>
+   </section>
+   <div class="menuFoot"><span>WASD MOVE</span><b>·</b><span>MOUSE AIM</span><b>·</b><span>CLICK FIRE</span></div>
+  </main>
+  <footer class="menuBottom"><span>THE BATTLE OF ROYALS</span><span>EARLY BUILD · MORE FEATURES IN DEVELOPMENT</span></footer>
+ </div>
+</div>
+
+<div id="adminOverlay" role="dialog" aria-modal="true" aria-label="Local admin console">
+ <div class="adminShell">
+  <div class="adminTop"><div><h2>👑 ROYALS ADMIN</h2><p>LOCAL MATCH CONTROL · THIS BROWSER ONLY</p></div><button class="adminClose" id="adminClose">CLOSE ✕</button></div>
+  <div class="adminNotice"><b>Local admin mode.</b> These controls work in your current Solo match on this device. They do not control other players, public matches, or a live server. Secure global admin tools still need a backend.</div>
+  <div class="adminGrid">
+   <section class="adminCard"><h3>MATCH STATUS</h3><div class="adminStat" id="adminMatchStatus">MENU</div><div class="adminMuted" id="adminMatchInfo">Start a Solo match to use player controls.</div></section>
+   <section class="adminCard"><h3>PLAYER CONTROLS</h3>
+    <div class="adminActions">
+     <button class="adminAction" id="adminHeal">❤️ RESTORE HEALTH</button>
+     <button class="adminAction" id="adminShield">🛡 RESTORE SHIELD</button>
+     <button class="adminAction" id="adminAmmo">🔫 REFILL AMMO</button>
+     <button class="adminAction dangerAction" id="adminClearBots">🧹 CLEAR ALL BOTS</button>
+    </div>
+   </section>
+   <section class="adminCard"><h3>SATURDAY MAYHEM · LOCAL EVENTS</h3>
+    <div class="adminMuted" style="margin-bottom:10px">Choose an event, then activate it in this match.</div>
+    <div class="adminEvents">
+     <button class="adminEvent" data-event="meteor">☄️ Meteor Apocalypse</button><button class="adminEvent" data-event="loot">💎 Infinite Legendary Loot</button>
+     <button class="adminEvent" data-event="zombies">🧟 Zombie Invasion</button><button class="adminEvent" data-event="boss">🐉 Giant Boss Battle</button>
+     <button class="adminEvent" data-event="gravity">🌙 Low Gravity Madness</button><button class="adminEvent" data-event="flood">🌊 Flood the Island</button>
+     <button class="adminEvent" data-event="gold">✨ Golden World</button><button class="adminEvent" data-event="chaos">⚡ Total Chaos</button>
+    </div>
+    <div class="adminEventControls"><button class="adminAction" id="adminActivate">ACTIVATE SELECTED EVENT</button><button class="adminAction dangerAction" id="adminEndEvent">END EVENT</button></div>
+    <div class="adminMuted" id="adminEventStatus">No event active.</div>
+   </section>
+   <section class="adminCard"><h3>ADMIN ACTIVITY</h3><div id="adminLog" class="adminLog">Local admin panel opened.</div><div class="adminFoot">Actions are temporary and reset when a new match starts. No passwords or admin secrets are stored in this HTML file.</div></section>
+  </div>
+ </div>
+</div>
+
 <div id="end" style="display:none"><div class="card"><h1 id="result">VICTORY!</h1><p id="resulttext">You survived the island.</p><button class="mainbtn" id="again">PLAY AGAIN</button></div></div>
 <div id="inv"><div class="invbox"><h2 id="invTitle"></h2><div id="invBody"></div><button class="mainbtn" id="invClose">CLOSE (TAB)</button></div></div><div id="hurt"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -92,7 +223,7 @@ body.healing #healthWrap{filter:drop-shadow(0 0 8px #52ff9b);transform:scale(1.0
 (()=>{
 const $=id=>document.getElementById(id);
 if(!window.THREE){$('notice').textContent='Game needs an internet connection to load its 3D graphics.';return;}
-let scene,camera,renderer,clock,player,gun,flash,ground,alive=false,health=100,shield=50,kills=0,ammo=30,reserve=120,selected=1,reloading=false,fireTimer=0,mouse=new THREE.Vector2(0,0),bots=[],bullets=[],effects=[],keys={},mapctx,playerYaw=0;
+let scene,camera,renderer,clock,player,gun,flash,ground,alive=false,health=100,shield=50,kills=0,ammo=30,reserve=120,selected=1,reloading=false,fireTimer=0,mouse=new THREE.Vector2(0,0),bots=[],bullets=[],effects=[],keys={},mapctx,playerYaw=0,cameraYaw=0,cameraPitch=.56,rightDragging=false,lastDragX=0,lastDragY=0;
 const raycaster=new THREE.Raycaster(),plane=new THREE.Plane(new THREE.Vector3(0,1,0),0),aimPoint=new THREE.Vector3(),tmp=new THREE.Vector3();
 const weapons={1:{name:'RIFLE',damage:20,rate:.16,spread:.012,ammo:30},2:{name:'SHOTGUN',damage:8,rate:.75,spread:.085,ammo:6},3:{name:'BURST',damage:19,rate:.11,spread:.02,ammo:24}};
 const mat=(c,r=.8,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
@@ -186,7 +317,7 @@ function decorate(){
  inst(new THREE.SphereGeometry(.14,6,5),450,c=>c.set([0xffd65a,0xff8bc4,0xffffff,0xff7a5a,0xb58cff][Math.floor(Math.random()*5)]),d=>{d.scale.set(1,.6,1);d.position.y=.18;});
 }
 function getAim(){raycaster.setFromCamera(mouse,camera);let hit=raycaster.ray.intersectPlane(plane,aimPoint);if(!hit){aimPoint.copy(player.position).add(new THREE.Vector3(0,0,-20));}return aimPoint;}
-function updateCamera(){let target=new THREE.Vector3(player.position.x,player.position.y+2.1,player.position.z);let offset=new THREE.Vector3(0,7.5,12).applyAxisAngle(new THREE.Vector3(0,1,0),playerYaw);camera.position.lerp(target.clone().add(offset),.13);camera.lookAt(target.clone().add(new THREE.Vector3(0,.1,0)));}
+function updateCamera(){let target=new THREE.Vector3(player.position.x,player.position.y+2.1,player.position.z);let dist=13,h= Math.cos(cameraPitch)*dist;let offset=new THREE.Vector3(Math.sin(cameraYaw)*h,Math.sin(cameraPitch)*dist,Math.cos(cameraYaw)*h);camera.position.lerp(target.clone().add(offset),.18);camera.lookAt(target.clone().add(new THREE.Vector3(0,.1,0)));}
 function toast(t){$('toast').textContent=t;$('toast').style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.opacity=0,1000);}
 function tracer(start,end,color=0xffe28a){let d=end.clone().sub(start),len=d.length(),line=mesh(new THREE.CylinderGeometry(.025,.025,len,5),new THREE.MeshBasicMaterial({color}),0,0,0);line.position.copy(start).add(end).multiplyScalar(.5);line.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize());effects.push({obj:line,time:.09});}
 function showDamageNumber(enemy,amount){
@@ -220,8 +351,9 @@ const SPEC={ // side-view parts [x,y,width,height]; first part takes the rarity 
  burst:[[8,8,28,7],[36,9,14,3],[20,15,5,8],[0,8,9,6],[14,5,10,3],[12,15,5,6]]};
 const RC=['#b8c0cc','#4be36a','#3aa0ff','#b45cff','#ffb82e'],RM=[1,1.1,1.22,1.36,1.5],RN=['Common','Uncommon','Rare','Epic','Legendary'];
 let slots=[null,null,null,null,null],sel=0,medkits=2,shieldPots=2,usingItem=false,modal=false,held=false,loot=[],chests=[],parts=[],heldGun=null,vy=0,AC=null,invMode='inv',pendingLoot=null,rlTok=0,near=null;
-const cur=()=>slots[sel],pick=a=>a[Math.floor(Math.random()*a.length)],mk=(id,rar,mag)=>({t:'w',id,rar,mag:mag===undefined?WT[id].mag:mag}),dmgOf=it=>Math.round(WT[it.id].dmg*RM[it.rar]);
-function rollRar(){let r=Math.random();return r<.5?0:r<.75?1:r<.9?2:r<.97?3:4;}
+let activeEvent=null,selectedAdminEvent='meteor',eventClock=0,meteorClock=0,meteors=[],floodPlane=null,goldLight=null;
+const cur=()=>slots[sel],pick=a=>a[Math.floor(Math.random()*a.length)],mk=(id,rar,mag)=>({t:'w',id,rar,mag:mag===undefined?WT[id].mag:mag}),dmgOf=it=>Math.round(WT[it.id].dmg*RM[it.rar]*(activeEvent==='chaos'?1.75:1));
+function rollRar(){if(activeEvent==='loot'||activeEvent==='gold')return 4;let r=Math.random();return r<.5?0:r<.75?1:r<.9?2:r<.97?3:4;}
 function initAudio(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}
 function snd(f,d,type,v,f2){if(!AC)return;try{let o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime;o.type=type||'square';o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(v||.05,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(t+d);}catch(e){}}
 function icon(id,c){return '<svg viewBox="0 0 66 26" fill="'+c+'">'+SPEC[id].map(p=>'<rect x="'+p[0]+'" y="'+p[1]+'" width="'+p[2]+'" height="'+p[3]+'" rx="1.5"/>').join('')+'</svg>';}
@@ -250,7 +382,7 @@ function fire(it,W){it.mag--;updHud();
  for(const [bot,raw] of dmgBy){const d=Math.max(1,Math.round(raw));total+=d;showDamageNumber(bot,d);if(bot.net){netSend({t:'hit',to:bot.id,d});continue;}bot.hp-=d;
   const bm=bot.mesh.userData.body.material;bm.emissive=new THREE.Color(0xff2525);bm.emissiveIntensity=1;setTimeout(()=>{bm.emissiveIntensity=0;},180);
   if(bot.hp<=0){bot.alive=false;scene.remove(bot.mesh);kills++;$('kills').textContent=kills;$('left').textContent=bots.filter(x=>x.alive).length;toast('RIVAL ELIMINATED!');snd(500,.25,'sawtooth',.06,120);
-   burst(bot.mesh.position.clone().setY(1.2),0xffffff,14);const p=bot.mesh.position.clone();spawnLoot(p,mk(pick(Object.keys(WT)),Math.min(2,rollRar())),1);spawnLoot(p,{t:'a',rar:0,n:25},1);if(kills>=8)finish(true);}}
+   burst(bot.mesh.position.clone().setY(1.2),0xffffff,14);const p=bot.mesh.position.clone();spawnLoot(p,mk(pick(Object.keys(WT)),Math.min(2,rollRar())),1);spawnLoot(p,{t:'a',rar:0,n:25},1);if(kills>=bots.length)finish(true);}}
  if(anyHit){const c=$('crosshair');c.classList.add('hit');c.style.transform='translate(-50%,-50%) scale(1.45)';setTimeout(()=>{c.classList.remove('hit');c.style.transform='translate(-50%,-50%)';},180);snd(900,.06,'sine',.05);if(total>0)toast('HIT! -'+total+' DAMAGE');}
  tracer(origin,end,new THREE.Color(RC[it.rar]).getHex());
  flash.visible=true;flash.position.set(.36,1.45,1.2);setTimeout(()=>flash.visible=false,55);
@@ -283,7 +415,7 @@ function buildChests(){chests=[];for(const p of [[-19,-12],[18,-18],[25,13],[-25
  const lid=new THREE.Group();lid.position.set(0,.85,-.52);g.add(lid);mesh(new B(1.5,.3,1.08),wood,0,.15,.54,lid);for(const s of [-.6,.6])mesh(new B(.12,.34,1.12),trim,s,.15,.54,lid);mesh(new B(.22,.26,.1),trim,0,0,1.1,lid);
  const glow=new THREE.Mesh(new THREE.SphereGeometry(1.1,14,10),new THREE.MeshBasicMaterial({color:ci,transparent:true,opacity:.16,depthWrite:false}));glow.position.y=.7;g.add(glow);
  const beam=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,9,8,1,true),new THREE.MeshBasicMaterial({color:ci,transparent:true,opacity:.2,depthWrite:false,side:THREE.DoubleSide,fog:false}));beam.position.y=4.5;g.add(beam);
- g.position.set(p[0],0,p[1]);g.rotation.y=Math.random()*6.28;scene.add(g);chests.push({g,lid,glow,beam,rar,open:false,t:0});}}
+ g.position.set(p[0],0,p[1]);g.rotation.y=Math.random()*6.28;scene.add(g);chests.push({g,lid,glow,beam,rar,originalRar:rar,open:false,t:0});}}
 function openChest(c,rem){if(c.open)return;c.open=true;if(!rem)netSend({t:'chest',i:chests.indexOf(c)});c.t=0;c.glow.visible=false;c.beam.visible=false;snd(220,.25,'triangle',.07,440);setTimeout(()=>snd(660,.12,'sine',.06),150);setTimeout(()=>snd(880,.18,'sine',.06),300);
  setTimeout(()=>{if(!alive||!chests.includes(c))return;const p=c.g.position,idx=chests.indexOf(c),R1=Math.random,sp0=lootPre,sn0=lootN;Math.random=seeded(4000+idx);lootPre='c'+idx+'_';lootN=0;spawnLoot(p,mk(pick(Object.keys(WT)),c.rar),1);
   spawnLoot(p,pick([{t:'a',rar:0,n:30},{t:'a',rar:0,n:30},{t:'m',rar:1,n:1},{t:'s',rar:2,n:1},{t:'u',rar:3}]),1);spawnLoot(p,{t:'a',rar:0,n:25},1);Math.random=R1;lootPre=sp0;lootN=sn0;toast(RN[c.rar].toUpperCase()+' CHEST!');},350);}
@@ -315,9 +447,85 @@ function onKey(e){const k=e.key.toLowerCase();
  if(k==='escape'){if(modal)closeInv();return;}
  if(modal)return;
  if(k==='r')reload();else if(k==='e')interact();else if(k==='h')useItem('m');else if(k==='j')useItem('s');else if(k.length===1&&'12345'.includes(k))choose(+k);}
-function tickWorld(dt){const T=performance.now()/1000;
+
+function adminLog(message){
+ const el=$('adminLog');if(!el)return;
+ const stamp=new Date().toLocaleTimeString();
+ el.textContent='['+stamp+'] '+message+'\n'+el.textContent;
+}
+function adminNeedMatch(){
+ if(!alive||!player||!scene){toast('START A SOLO MATCH FIRST');adminLog('Action unavailable: no active Solo match.');return false;}
+ if(net){toast('LOCAL ADMIN ACTIONS ARE SOLO ONLY');adminLog('Action blocked: multiplayer session detected.');return false;}
+ return true;
+}
+function adminStatus(){
+ $('adminMatchStatus').textContent=alive?(net?'MULTIPLAYER':'SOLO MATCH'):'MENU';
+ $('adminMatchInfo').textContent=alive?('Eliminations: '+kills+' · Rivals remaining: '+bots.filter(b=>b.alive).length):'Start a Solo match to use player controls.';
+ $('adminEventStatus').textContent=activeEvent?('ACTIVE: '+({meteor:'Meteor Apocalypse',loot:'Infinite Legendary Loot',zombies:'Zombie Invasion',boss:'Giant Boss Battle',gravity:'Low Gravity Madness',flood:'Flood the Island',gold:'Golden World',chaos:'Total Chaos'}[activeEvent])):'No event active.';
+}
+const ADMIN_EVENTS={
+ meteor:{name:'☄️ METEOR APOCALYPSE',desc:'Meteors periodically strike around the island.'},
+ loot:{name:'💎 INFINITE LEGENDARY LOOT',desc:'Chests and new drops are legendary rarity.'},
+ zombies:{name:'🧟 ZOMBIE INVASION',desc:'Six extra zombie rivals have entered the island.'},
+ boss:{name:'🐉 GIANT BOSS BATTLE',desc:'A giant boss rival has entered the island.'},
+ gravity:{name:'🌙 LOW GRAVITY MADNESS',desc:'Jump higher and fall more slowly.'},
+ flood:{name:'🌊 FLOOD THE ISLAND',desc:'The island is covered by a visible shallow flood.'},
+ gold:{name:'✨ GOLDEN WORLD',desc:'The island turns golden and loot is legendary.'},
+ chaos:{name:'⚡ TOTAL CHAOS',desc:'Your weapon damage is boosted.'}
+};
+function makeAdminBot(name,color,hp,scale){
+ const m=makeCharacter(color);if(scale)m.scale.setScalar(scale);
+ const a=Math.random()*Math.PI*2,r=18+Math.random()*35;m.position.set(Math.cos(a)*r,0,Math.sin(a)*r);scene.add(m);
+ const b={mesh:m,hp:hp||100,alive:true,shoot:.8+Math.random()*1.5,dir:new THREE.Vector3(),name};
+ bots.push(b);return b;
+}
+function spawnMeteor(){
+ if(!alive||!scene)return;
+ const x=(Math.random()-.5)*105,z=(Math.random()-.5)*105;
+ const rock=mesh(new THREE.IcosahedronGeometry(1.15,1),mat(0xff7a32,.4),x,42,z);
+ rock.material.emissive=new THREE.Color(0xff3b12);rock.material.emissiveIntensity=1.4;
+ const glow=mesh(new THREE.SphereGeometry(1.8,8,6),new THREE.MeshBasicMaterial({color:0xffa33b,transparent:true,opacity:.28}),x,42,z);
+ meteors.push({rock,glow,x,z,y:42,vy:0});
+}
+function updateAdminEvents(dt){
+ if(!activeEvent)return;
+ eventClock+=dt;
+ if(activeEvent==='meteor'){
+  meteorClock-=dt;if(meteorClock<=0){meteorClock=4.5;spawnMeteor();}
+  for(const m of meteors){m.vy+=28*dt;m.y-=m.vy*dt;m.rock.position.y=m.y;m.glow.position.y=m.y;
+   if(m.y<=.8){const d=Math.hypot(player.position.x-m.x,player.position.z-m.z);if(d<7){const hit=18;if(shield>0)shield=Math.max(0,shield-hit);else health=Math.max(0,health-hit);$('hp').style.width=health+'%';$('sh').style.width=(shield/50*100)+'%';$('hptext').textContent=Math.ceil(health);$('shtext').textContent=Math.ceil(shield);hurt();if(health<=0)finish(false);}
+    bots.forEach(b=>{if(b.alive&&Math.hypot(b.mesh.position.x-m.x,b.mesh.position.z-m.z)<7){b.hp-=65;if(b.hp<=0){b.alive=false;scene.remove(b.mesh);}}});
+    burst(new THREE.Vector3(m.x,.5,m.z),0xff8738,18);scene.remove(m.rock);scene.remove(m.glow);m.dead=true;
+   }}
+  meteors=meteors.filter(m=>!m.dead);
+ }
+}
+function clearAdminEvent(){
+ activeEvent=null;eventClock=0;meteorClock=0;
+ meteors.forEach(m=>{scene&&scene.remove(m.rock);scene&&scene.remove(m.glow);});meteors=[];
+ if(floodPlane){scene&&scene.remove(floodPlane);floodPlane.geometry.dispose();floodPlane.material.dispose();floodPlane=null;}
+ if(goldLight){scene&&scene.remove(goldLight);goldLight=null;}
+ if(chests)chests.forEach(c=>{c.rar=c.originalRar===undefined?c.rar:c.originalRar;const ci=parseInt(RC[c.rar].slice(1),16);c.glow.material.color.setHex(ci);c.beam.material.color.setHex(ci);});
+ if(scene&&scene.fog)scene.fog.color.setHex(0xcdeefa);
+ if(mats.grass)mats.grass.color.setHex(0xffffff);
+ if(mats.water)mats.water.color.setHex(0xffffff);
+ $('eventBanner').style.display='none';adminStatus();adminLog('Ended the active event.');
+}
+function activateAdminEvent(key){
+ if(!adminNeedMatch())return;
+ clearAdminEvent();activeEvent=key;eventClock=0;meteorClock=1;
+ if(key==='loot'||key==='gold'){chests.forEach(c=>{c.rar=4;c.glow.material.color.setHex(parseInt(RC[4].slice(1),16));c.beam.material.color.setHex(parseInt(RC[4].slice(1),16));});}
+ if(key==='zombies'){for(let i=0;i<6;i++)makeAdminBot('ZOMBIE '+(i+1),0x5f9b55,125,1.05);}
+ if(key==='boss'){const b=makeAdminBot('ISLAND BOSS',0x8e4bba,1200,2.25);b.shoot=.4;}
+ if(key==='flood'){floodPlane=mesh(new THREE.CircleGeometry(79,64),new THREE.MeshStandardMaterial({color:0x2bbbe8,transparent:true,opacity:.36,roughness:.2,metalness:.1,side:THREE.DoubleSide}),0,.035,0);floodPlane.rotation.x=-Math.PI/2;}
+ if(key==='gold'){mats.grass.color.setHex(0xffd66b);mats.water.color.setHex(0xffd66b);scene.fog.color.setHex(0xf4dfaa);goldLight=new THREE.PointLight(0xffd15a,1.5,180);goldLight.position.set(0,22,0);scene.add(goldLight);}
+ $('eventBanner').textContent=ADMIN_EVENTS[key].name+' — '+ADMIN_EVENTS[key].desc;
+ $('eventBanner').style.display='block';adminStatus();adminLog('Activated '+ADMIN_EVENTS[key].name+'.');toast('EVENT ACTIVATED!');
+}
+
+function tickWorld(dt){const T=performance.now()/1000;updateAdminEvents(dt);
  if(net){net.acc+=dt;if(net.acc>.06){net.acc=0;netSend({t:'s',x:player.position.x,y:player.position.y,z:player.position.z,r:player.rotation.y});}for(const r of Object.values(remotes))if(r.alive){r.mesh.position.lerp(r.tp,Math.min(1,12*dt));r.mesh.rotation.y=r.tr;}}
- if(keys[' ']&&player.position.y<=.001)vy=8;vy-=24*dt;player.position.y=Math.max(0,player.position.y+vy*dt);if(player.position.y===0&&vy<0)vy=0;
+ if(keys[' ']&&player.position.y<=.001)vy=(activeEvent==='gravity'?12:8);vy-=(activeEvent==='gravity'?8:24)*dt;player.position.y=Math.max(0,player.position.y+vy*dt);if(player.position.y===0&&vy<0)vy=0;
  for(const c of chests){if(c.open){c.t+=dt;c.lid.rotation.x=-Math.min(1,c.t/.5)*1.9;}else c.glow.scale.setScalar(1+.1*Math.sin(T*3+c.g.position.x));}
  for(const l of loot){const p=l.g.position;if(p.y>0||l.vy>0){l.vy-=20*dt;p.y+=l.vy*dt;p.x+=l.vx*dt;p.z+=l.vz*dt;if(p.y<=0){p.y=0;l.vy=0;l.vx=l.vz=0;}}l.m.rotation.y+=dt*1.8;l.m.position.y=.9+Math.sin(T*2.5+l.t)*.12;}
  near=nearest();const pr=$('prompt');if(near){const h='<b>E</b> '+(near.k==='c'?'Open chest <span style="color:'+RC[near.o.rar]+'">('+RN[near.o.rar]+')</span>':lootLabel(near.o.item));if(pr._h!==h){pr.innerHTML=h;pr._h=h;}pr.style.display='block';}else pr.style.display='none';
@@ -341,22 +549,22 @@ function update(dt){if(!alive)return;fireTimer=Math.max(0,fireTimer-dt);if(modal
  let move=new THREE.Vector3((keys.d?1:0)-(keys.a?1:0),0,(keys.s?1:0)-(keys.w?1:0));if(move.lengthSq()){move.normalize().multiplyScalar((keys.shift?13:8)*dt);move.applyAxisAngle(new THREE.Vector3(0,1,0),playerYaw);player.position.add(move);player.position.x=THREE.MathUtils.clamp(player.position.x,-64,64);player.position.z=THREE.MathUtils.clamp(player.position.z,-64,64);}
  let aim=getAim();let dx=aim.x-player.position.x,dz=aim.z-player.position.z;if(Math.hypot(dx,dz)>1)player.rotation.y=Math.atan2(dx,dz);
  bots.forEach(b=>{if(!b.alive)return;b.shoot-=dt;let p=b.mesh.position,dist=p.distanceTo(player.position);if(dist>9){let v=player.position.clone().sub(p);v.y=0;v.normalize();p.add(v.multiplyScalar(dt*(dist>22?2.4:1.2)));b.mesh.rotation.y=Math.atan2(v.x,v.z);}
- if(dist<30){b.sw=(b.sw||0)-dt;if(b.sw<=0){b.sw=.8+Math.random()*1.4;b.side=Math.random()<.5?-1:1;}let f=player.position.clone().sub(p);f.y=0;f.normalize();p.add(new THREE.Vector3(-f.z,0,f.x).multiplyScalar((b.side||1)*dt*2.2));if(dist<9){b.mesh.rotation.y=Math.atan2(f.x,f.z);}}if(b.shoot<=0&&dist<42){b.shoot=1.8+Math.random()*1.8;tracer(p.clone().setY(1.5),player.position.clone().setY(player.position.y+1.4),0xff6b6b);snd(160,.08,'sawtooth',.025,60);if(Math.random()<Math.max(.15,.55-dist/90)){let dmg=5+Math.random()*6;hurt();if(shield>0)shield=Math.max(0,shield-dmg);else health=Math.max(0,health-dmg);$('hp').style.width=health+'%';$('sh').style.width=shield/50*100+'%';$('hptext').textContent=Math.ceil(health);$('shtext').textContent=Math.ceil(shield);if(health<=0)finish(false);}}});
+ if(dist<30){b.sw=(b.sw||0)-dt;if(b.sw<=0){b.sw=.8+Math.random()*1.4;b.side=Math.random()<.5?-1:1;}let f=player.position.clone().sub(p);f.y=0;f.normalize();p.add(new THREE.Vector3(-f.z,0,f.x).multiplyScalar((b.side||1)*dt*2.2));if(dist<9){b.mesh.rotation.y=Math.atan2(f.x,f.z);}}if(b.shoot<=0&&dist<42){b.shoot=(activeEvent==='chaos'?.9:1.8)+Math.random()*(activeEvent==='chaos'?.7:1.8);tracer(p.clone().setY(1.5),player.position.clone().setY(player.position.y+1.4),0xff6b6b);snd(160,.08,'sawtooth',.025,60);if(Math.random()<Math.max(.15,.55-dist/90)){let dmg=5+Math.random()*6;hurt();if(shield>0)shield=Math.max(0,shield-dmg);else health=Math.max(0,health-dmg);$('hp').style.width=health+'%';$('sh').style.width=shield/50*100+'%';$('hptext').textContent=Math.ceil(health);$('shtext').textContent=Math.ceil(shield);if(health<=0)finish(false);}}});
  effects.forEach(e=>{e.time-=dt;if(e.time<=0){scene.remove(e.obj);e.dead=true;}});effects=effects.filter(e=>!e.dead);
  [player,...bots.filter(b=>b.alive).map(b=>b.mesh)].forEach(g=>{let u=g.userData;u.l=u.l||g.position.clone();let d=g.position.distanceTo(u.l);u.l.copy(g.position);u.ph=(u.ph||0)+d*2.2;let a=Math.min(1,d/Math.max(dt,.001)/6)*.7;if(u.legs&&u.legs.length>1){u.legs[0].rotation.x=Math.sin(u.ph)*a;u.legs[1].rotation.x=-Math.sin(u.ph)*a;}});
  updateCamera();drawMap();mapChests();
 }
 function drawMap(){let c=$('mapcanvas'),ctx=c.getContext('2d');ctx.clearRect(0,0,200,200);ctx.fillStyle='#478b59';ctx.fillRect(0,0,200,200);ctx.fillStyle='#d6c08a';ctx.beginPath();ctx.arc(100,100,93,0,7);ctx.fill();ctx.fillStyle='#408b9a';ctx.beginPath();ctx.arc(100,100,76,0,7);ctx.fill();ctx.fillStyle='#5aab67';ctx.beginPath();ctx.arc(100,100,73,0,7);ctx.fill();bots.filter(b=>b.alive).forEach(b=>{ctx.fillStyle='#ff5968';ctx.beginPath();ctx.arc(100+b.mesh.position.x*1.05,100+b.mesh.position.z*1.05,3.5,0,7);ctx.fill();});ctx.fillStyle='#ffe16b';ctx.beginPath();ctx.arc(100+player.position.x*1.05,100+player.position.z*1.05,5,0,7);ctx.fill();}
-function finish(win){if(!alive)return;alive=false;if(net&&!win)netSend({t:'dead'});$('end').style.display='flex';$('result').innerHTML=win?'👑 <em>VICTORY!</em>':'💥 GAME OVER';$('resulttext').textContent=win?'You are the last one standing! Eliminations: '+kills:'You were eliminated. Eliminations: '+kills;}
+function finish(win){if(!alive)return;alive=false;$('adminMatchOpen').style.display='none';if(net&&!win)netSend({t:'dead'});$('end').style.display='flex';$('result').innerHTML=win?'👑 <em>VICTORY!</em>':'💥 GAME OVER';$('resulttext').textContent=win?'You are the last one standing! Eliminations: '+kills:'You were eliminated. Eliminations: '+kills;}
 function start(mp,seed,sp){
  $('start').style.display='none';initAudio();
  const R0=Math.random;if(mp)Math.random=seeded(seed);try{buildWorld();}catch(err){Math.random=R0;$('start').style.display='flex';$('notice').textContent='Could not load the 3D island. Refresh the page and try again.';console.error(err);return;}Math.random=R0;
- health=100;shield=50;kills=0;reserve=90;medkits=2;shieldPots=2;usingItem=false;reloading=false;modal=false;held=false;vy=0;loot=[];parts=[];rlTok++;heldGun=null;near=null;
+ clearAdminEvent();health=100;shield=50;kills=0;reserve=90;medkits=2;shieldPots=2;usingItem=false;reloading=false;modal=false;held=false;vy=0;loot=[];parts=[];rlTok++;heldGun=null;near=null;
  slots=[mk('ar',0),null,null,null,null];sel=0;refresh();hideItemProgress();
  $('kills').textContent=0;$('left').textContent=8;$('hp').style.width='100%';$('sh').style.width='100%';$('hptext').textContent=100;$('shtext').textContent=50;$('end').style.display='none';$('inv').style.display='none';
  lootPre=(net?net.id:'s')+'_';lootN=0;
- if(mp){bots.forEach(b=>scene.remove(b.mesh));bots=[];player.position.set(sp.x,0,sp.z);remotes={};net.ids.forEach(id=>{if(id!==net.id)addRemote(id,net.names[id]||'Player');});$('left').textContent=net.ids.length;}
- alive=true;clock=new THREE.Clock();toast('FIND CHESTS — PRESS E');animate();}
+ if(mp){$('adminMatchOpen').style.display='none';clearAdminEvent();bots.forEach(b=>scene.remove(b.mesh));bots=[];player.position.set(sp.x,0,sp.z);remotes={};net.ids.forEach(id=>{if(id!==net.id)addRemote(id,net.names[id]||'Player');});$('left').textContent=net.ids.length;}
+ cameraYaw=playerYaw;cameraPitch=.56;rightDragging=false;alive=true;$('adminMatchOpen').style.display=mp?'none':'block';clock=new THREE.Clock();adminStatus();toast('FIND CHESTS — PRESS E');animate();}
 let raf;function animate(){if(!alive)return;raf=requestAnimationFrame(animate);let dt=Math.min(clock.getDelta(),.04);update(dt);renderer.render(scene,camera);}
 /*NET*/
 let net=null,remotes={},lootPre='s_',lootN=0;
@@ -379,10 +587,10 @@ function apply(m){switch(m.t){
  case 'drop':spawnLoot({x:m.x,z:m.z},m.item,1,m.lid);break;
  case 'dead':case 'left':{const r=remotes[m.f];if(r){r.alive=false;scene.remove(r.mesh);}netCheck();break;}}}
 function startMP(m){net.ids=m.ids;net.names=m.names;const a=m.ids.indexOf(net.id)/m.ids.length*Math.PI*2;start(true,m.seed,{x:Math.cos(a)*50,z:Math.sin(a)*50});}
-const myName=()=>($('pname').value||'Player').slice(0,12);
+const myName=()=>($('pname').value.trim()||'Player').replace(/[<>]/g,'').slice(0,12);
 $('hostBtn').onclick=()=>{if(typeof Peer==='undefined'){lobby('Online play needs internet (PeerJS did not load).');return;}
  const code=($('jcode').value.trim().toUpperCase()||Math.random().toString(36).slice(2,6).toUpperCase()),peer=new Peer('royals-'+code);net={host:true,peer,conns:[],id:'royals-'+code,acc:0,names:{}};net.names[net.id]=myName();
- const cnt=()=>lobby('Room code: <b style="font-size:26px">'+code+'</b><br>Share it with friends. Players joined: '+(1+net.conns.length));
+ const cnt=()=>lobby('Room code: <b style="font-size:26px;letter-spacing:4px">'+code+'</b><br>Share this code with friends. Players in room: '+(1+net.conns.length)+' / 8');
  let ready=false;lobby('Creating room…');setTimeout(()=>{if(!ready)lobby('Can’t reach the online matchmaking service. Check your internet and try again, or use Solo vs Bots.');},8000);
  peer.on('open',()=>{ready=true;cnt();$('startMP').style.display='inline-block';});peer.on('disconnected',()=>{if(!ready)lobby('Disconnected from the matchmaking service. Try again.');});peer.on('error',e=>lobby('Network error: '+e.type+'. Try again.'));
  peer.on('connection',c=>{net.conns.push(c);c.on('data',m=>{if(m.t==='hello'){net.names[c.peer]=m.n;cnt();}else onMsg(m,c);});
@@ -396,14 +604,44 @@ function joinRoom(code,quick){
  peer.on('open',id=>{net.id=id;const c=peer.connect('royals-'+code,{reliable:true});net.conn=c;c.on('open',()=>{ok=true;c.send({t:'hello',n:myName()});lobby('Online game found! Waiting for the host to start…');});c.on('data',m=>onMsg(m,c));c.on('close',()=>{toast('Host left the game');if(alive)finish(false);});});
  peer.on('error',e=>fail('Could not join: '+e.type+'. Check the code.'));}
 $('joinBtn').onclick=()=>{const code=$('jcode').value.trim().toUpperCase();if(code)joinRoom(code,false);};
-$('quickBtn').onclick=()=>joinRoom('PLAY',true);
+$('onlineToggle').onclick=()=>{const p=$('onlinePanel');p.hidden=!p.hidden;if(!p.hidden)p.scrollIntoView({behavior:'smooth',block:'nearest'});};
 
-$('play').addEventListener('click',e=>{e.preventDefault();start();});$('again').onclick=()=>{if(net){location.reload();return;}cancelAnimationFrame(raf);start();};
+$('adminOpen').onclick=()=>{$('adminOverlay').style.display='flex';adminStatus();};$('adminMatchOpen').onclick=()=>{$('adminOverlay').style.display='flex';adminStatus();};
+$('adminClose').onclick=()=>{$('adminOverlay').style.display='none';};
+document.querySelectorAll('.adminEvent').forEach(btn=>btn.onclick=()=>{
+ document.querySelectorAll('.adminEvent').forEach(x=>x.classList.remove('selected'));
+ btn.classList.add('selected');selectedAdminEvent=btn.dataset.event;adminLog('Selected '+ADMIN_EVENTS[selectedAdminEvent].name+'.');
+});
+$('adminHeal').onclick=()=>{if(!adminNeedMatch())return;health=100;$('hp').style.width='100%';$('hptext').textContent='100';toast('HEALTH RESTORED');adminLog('Restored player health.');};
+$('adminShield').onclick=()=>{if(!adminNeedMatch())return;shield=50;$('sh').style.width='100%';$('shtext').textContent='50';toast('SHIELD RESTORED');adminLog('Restored player shield.');};
+$('adminAmmo').onclick=()=>{if(!adminNeedMatch())return;reserve=999;slots.forEach(it=>{if(it)it.mag=WT[it.id].mag;});refresh();toast('AMMO REFILLED');adminLog('Refilled all weapon ammo.');};
+$('adminClearBots').onclick=()=>{if(!adminNeedMatch())return;bots.forEach(b=>{if(b.alive){b.alive=false;scene.remove(b.mesh);}});$('left').textContent='1';toast('ALL BOTS CLEARED');adminLog('Cleared all bots from this match.');};
+$('adminActivate').onclick=()=>activateAdminEvent(selectedAdminEvent);
+$('adminEndEvent').onclick=()=>{if(!adminNeedMatch())return;clearAdminEvent();toast('EVENT ENDED');};
+$('adminOverlay').addEventListener('click',e=>{if(e.target.id==='adminOverlay')$('adminOverlay').style.display='none';});
+ $('quickBtn')?.addEventListener('click',()=>joinRoom('PLAY',true));
+
+$('play').addEventListener('click',e=>{e.preventDefault();if(net){try{net.peer&&net.peer.destroy();}catch(_){}net=null;remotes={};}start();});$('again').onclick=()=>{if(net){location.reload();return;}cancelAnimationFrame(raf);start();};
 window.addEventListener('resize',()=>{if(!camera)return;camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
-window.addEventListener('mousemove',e=>{mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;$('crosshair').style.left=e.clientX+'px';$('crosshair').style.top=e.clientY+'px';});
+window.addEventListener('mousemove',e=>{
+  if(rightDragging&&alive&&!modal){
+    const dx=e.clientX-lastDragX,dy=e.clientY-lastDragY;
+    cameraYaw+=dx*.006;
+    cameraPitch=THREE.MathUtils.clamp(cameraPitch-dy*.005,.12,1.18);
+    lastDragX=e.clientX;lastDragY=e.clientY;
+  }
+  mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;
+  $('crosshair').style.left=e.clientX+'px';$('crosshair').style.top=e.clientY+'px';
+});
 window.addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;onKey(e);});
 window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
-window.addEventListener('mousedown',e=>{if(e.button===0&&alive&&!modal&&!e.target.closest('#hotbar')){held=true;shoot();}});window.addEventListener('mouseup',()=>held=false);
+window.addEventListener('mousedown',e=>{
+  if(e.button===2){e.preventDefault();if(alive&&!modal){rightDragging=true;lastDragX=e.clientX;lastDragY=e.clientY;}return;}
+  if(e.button===0&&alive&&!modal&&!e.target.closest('#hotbar')){held=true;shoot();}
+});
+window.addEventListener('mouseup',e=>{if(e.button===0)held=false;if(e.button===2)rightDragging=false;});
+window.addEventListener('blur',()=>{held=false;rightDragging=false;});
+window.addEventListener('contextmenu',e=>e.preventDefault());
 $('hotbar').addEventListener('click',e=>{const s=e.target.closest('.slot');if(s)choose(+s.dataset.i+1);});
 $('inv').addEventListener('click',e=>{const t=e.target.closest('[data-drop],[data-rep],[data-eq],#invClose');if(!t)return;if(t.id==='invClose'){closeInv();return;}
  if(t.dataset.drop!==undefined){dropSlot(+t.dataset.drop);renderInv();return;}if(t.dataset.rep!==undefined){replaceSlot(+t.dataset.rep);return;}
